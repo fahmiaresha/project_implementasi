@@ -15,9 +15,9 @@
                         <a href="{{ url('/') }}">Home</a>
                     </li>
                     <li class="breadcrumb-item">
-                        <a href="#">Customer</a>
+                        <a href="#">Kunjungan Toko</a>
                     </li>
-                    <li class="breadcrumb-item active" aria-current="page">Data Customer</li>
+                    <li class="breadcrumb-item active" aria-current="page">List Toko</li>
                 </ol>
             </nav>
         </div>

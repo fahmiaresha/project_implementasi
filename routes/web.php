@@ -51,4 +51,4 @@ Route::get('input-geolocation', 'GeolocationController@input_geolocation')->name
 Route::post('input-geolocation/store', 'GeolocationController@input_geolocation_store');
 Route::get('titik-kunjungan', 'GeolocationController@titik_kunjungan')->name('titik-kunjungan');
 Route::get('toko-barcode/{id}', 'GeolocationController@toko_barcode')->name('toko-barcode');
-
+Route::get('data-qr-code/{id}', 'GeolocationController@data_qrcode')->name('data-qr-code');

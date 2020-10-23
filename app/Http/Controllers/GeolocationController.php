@@ -50,6 +50,11 @@ class GeolocationController extends Controller
         return view('geolocation/titik-kunjungan');
     }
 
+    public function data_qrcode($id){
+        $toko = DB::table('lokasi_toko')->where('id_barcode',$id)->get();
+        return json_encode($toko);
+    }
+
 
     /**
      * Show the form for creating a new resource.

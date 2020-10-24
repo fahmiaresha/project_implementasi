@@ -29,8 +29,16 @@
 </div>
 
 <div class="row">
-    <div class="col-md-6 col-sm-6">
+<div class="col-md-12 col-sm-12" id="alert">
 
+</div>
+</div>
+
+<div class="row" >
+    
+    <div class="tabel" id="details_toko"></div>
+
+    <div class="col-md-6 col-sm-6" id="bagian1">
     <div class="card">
    <div class="card-body">
     
@@ -64,41 +72,15 @@
 </div>
 
     </div>
-    <div class="col-md-6 col-sm-6">
+    <div class="col-md-6 col-sm-6" id="bagian2">
     
     <code id="result" type="hidden"></code>
-   
-    <div class="tabel" id="tabel"></div>
-
     
-        
-
-    </div>
+   </div>
 </div>
 
-	<!-- .modal-xl -->
-  <div class="modal fade" id="modal-maps" tabindex="-1" role="dialog" aria-hidden="true">
-		<div class="modal-dialog modal-lg">
-			<div class="modal-content">
-			<div class="modal-header">
-				<h6 class="modal-title">Lokasi Anda</h6>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				<i class="ti-close"></i>
-				</button>
-			</div>
-			<div class="modal-body">
 
-			<div id="demo2" style="height: 400px; position: relative; overflow: hidden; border: 1px solid gray;"> </div> 
-			
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-success" data-dismiss="modal">Close
-				</button>
-				<!-- <button type="button" class="btn btn-primary">Save changes</button> -->
-			</div>
-			</div>
-		</div>
-		</div>
+
 
 <script>
    $('.select2-example').select2({
@@ -203,43 +185,86 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAznbmf9fxvDrf8Fnv8MPq09mQ
                         console.log(data);
                         jQuery.each(data, function(key,value){
                            
-                          // var append_html = '\<div class="data_tabel" id="data_tabel">\
-                          //                     <div class="card">\
-                          //                     <div class="card-body">\
-                          //                     <div class="table-responsive">\
-                          //                     <table class="table ">\
-                          //                       <thead>\
-                          //                       <tr>\
-                          //                       <th colspan="2" style="font-size:13px;"> Details Toko</th>\
-                          //                       </tr>\
-                          //                       </thead>\
-                          //                       <tbody>\
-                          //                       <tr>\
-                          //                       <td> <strong> ID  <strong></td>\
-                          //                       <td>'+value.id_barcode+'</td>\
-                          //                       </tr>\
-                          //                       <tr>\
-                          //                       <td><strong> Alamat </strong></td>\
-                          //                       <td>'+value.alamat_toko+'</td>\
-                          //                       </tr>\
-                          //                       <tr>\
-                          //                       <td><strong>Latitude <strong> </td>\
-                          //                       <td class="text-wrap" style="text-align:justify" >'+value.latitude+'</td>\
-                          //                       </tr>\
-                          //                       <tr>\
-                          //                       <td><strong>Longitude <strong> </td>\
-                          //                       <td class="text-wrap" style="text-align:justify" >'+value.longitude+'</td>\
-                          //                       </tr>\
-                          //                       <tr>\
-                          //                       <td><strong>Accuracy <strong> </td>\
-                          //                       <td class="text-wrap" style="text-align:justify" >'+value.accuracy+'</td>\
-                          //                       </tr>\
-                          //                       </tbody>\
-                          //                     </table>\
-                          //                   </div>\
-                          //                   </div>\
-                          //                   </div>\
-                          //                   </div>';
+                          var append_html = '\<div>\
+                                              <div class="card">\
+                                              <div class="card-body">\
+                                              <div id="lokasi_toko" style="height: 300px; position: relative; overflow: hidden; border: 1px solid gray;"></div>\
+                                              <br>\
+                                              <div class="table-responsive">\
+                                              <table class="table ">\
+                                                <thead>\
+                                                <tr>\
+                                                <th colspan="2" style="font-size:13px;"> Details Toko</th>\
+                                                </tr>\
+                                                </thead>\
+                                                <tbody>\
+                                                <tr>\
+                                                <td> <strong> ID  <strong></td>\
+                                                <td>'+value.id_barcode+'</td>\
+                                                </tr>\
+                                                <tr>\
+                                                <td><strong> Alamat </strong></td>\
+                                                <td>'+value.alamat_toko+'</td>\
+                                                </tr>\
+                                                <tr>\
+                                                <td><strong>Latitude <strong> </td>\
+                                                <td class="text-wrap" style="text-align:justify" >'+value.latitude+'</td>\
+                                                </tr>\
+                                                <tr>\
+                                                <td><strong>Longitude <strong> </td>\
+                                                <td class="text-wrap" style="text-align:justify" >'+value.longitude+'</td>\
+                                                </tr>\
+                                                <tr>\
+                                                <td><strong>Accuracy <strong> </td>\
+                                                <td class="text-wrap" style="text-align:justify" >'+value.accuracy+'</td>\
+                                                </tr>\
+                                                </tbody>\
+                                              </table>\
+                                            </div>\
+                                            </div>\
+                                            </div>\
+                                            </div>';
+                          getlocation_sales();
+                          var append_html2 = '\<div>\
+                                              <div class="card">\
+                                              <div class="card-body">\
+                                              <div id="lokasi_sales" style="height: 300px; position: relative; overflow: hidden; border: 1px solid gray;"></div>\
+                                              <br>\
+                                              <div class="table-responsive">\
+                                              <table class="table ">\
+                                                <thead>\
+                                                <tr>\
+                                                <th colspan="2" style="font-size:13px;"> Details Sales</th>\
+                                                </tr>\
+                                                </thead>\
+                                                <tbody>\
+                                                <tr>\
+                                                <td><strong>ID <strong> </td>\
+                                                <td class="text-wrap" style="text-align:justify" >SALES001</td>\
+                                                </tr>\
+                                                <tr>\
+                                                <td><strong>Nama <strong> </td>\
+                                                <td class="text-wrap" style="text-align:justify" >Robert</td>\
+                                                </tr>\
+                                                <tr>\
+                                                <td><strong>Latitude <strong> </td>\
+                                                <td class="text-wrap" style="text-align:justify" id="lat_sales">'+latitude_sales+'</td>\
+                                                </tr>\
+                                                <tr>\
+                                                <td><strong>Longitude <strong> </td>\
+                                                <td class="text-wrap" style="text-align:justify" id="long_sales">'+longitude_sales+'</td>\
+                                                </tr>\
+                                                <tr>\
+                                                <td><strong>Accuracy <strong> </td>\
+                                                <td class="text-wrap" style="text-align:justify" id="akurasi_sales">'+accuracy_sales+'</td>\
+                                                </tr>\
+                                                </tbody>\
+                                              </table>\
+                                            </div>\
+                                            </div>\
+                                            </div>\
+                                            </div>';
+
                                             longitude_toko = value.longitude;
                                             latitude_toko = value.latitude;
                                             accuracy_toko = value.accuracy;
@@ -247,44 +272,86 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAznbmf9fxvDrf8Fnv8MPq09mQ
                                             console.log('Informasi Toko :');
                                             console.log(latitude_toko);
                                             console.log(longitude_toko);
-                                            
                                             console.log(accuracy_toko);
-                                            
-                            // $("#tabel").append(append_html);
+                                
+                            $("#bagian1").hide();
+                            $("#details_toko").addClass("col-md-6 col-sm-6"); 
+                            $("#details_toko").append(append_html);
+
+                            $("#bagian2").append(append_html2);
+
                         }); 
-                        getlocation();
+                        getlocation_toko();
+                      
                      }
                   });
     }
 
-    function getlocation(){ 
+    function getlocation_toko(){ 
 			if(navigator.geolocation){ 
-				navigator.geolocation.getCurrentPosition(showLoc, errHand); 
+				navigator.geolocation.getCurrentPosition(showLoc_toko, errHand_toko); 
 				
 			} 
 		} 
 
-		function showLoc(pos){ 
+		function showLoc_toko(pos){ 
+			var lattlong_toko = new google.maps.LatLng(latitude_toko, longitude_toko); 
+			var OPTions = { 
+				center: lattlong_toko, 
+				zoom: 10, 
+				mapTypeControl: true, 
+				navigationControlOptions: {style:google.maps.NavigationControlStyle.SMALL} 
+			} 
+			var mapg = new google.maps.Map(document.getElementById("lokasi_toko"), OPTions); 
+			var markerg = 
+			new google.maps.Marker({position:lattlong_toko, map:mapg, title:"You are here!"}); 
+		} 
+
+		
+		
+		function errHand_toko(err) { 
+			switch(err.code) { 
+				case err.PERMISSION_DENIED: 
+					result.innerHTML = "The application doesn't have the permission" + 
+							"to make use of location services" 
+					break; 
+				case err.POSITION_UNAVAILABLE: 
+					result.innerHTML = "The location of the device is uncertain" 
+					break; 
+				case err.TIMEOUT: 
+					result.innerHTML = "The request to get user location timed out" 
+					break; 
+				case err.UNKNOWN_ERROR: 
+					result.innerHTML = "Time to fetch location information exceeded"+ 
+					"the maximum timeout interval" 
+					break; 
+			} 
+		} 
+
+    function getlocation_sales(){ 
+			if(navigator.geolocation){ 
+				navigator.geolocation.getCurrentPosition(showLoc_sales, errHand_sales); 
+			} 
+		} 
+
+    function showLoc_sales(pos){ 
 			latt = pos.coords.latitude; 
 			long = pos.coords.longitude; 
 			var accuracy = pos.coords.accuracy;
-            // x.innerHTML = "Latitude: " + latt + "<br>Longitude: " + long;
-			// latitude.value = latt;
-			// longitude.value = long
-			// akurasi.value = accuracy;
 
        longitude_sales = long;
        latitude_sales = latt;
        accuracy_sales = accuracy;
+
+       $("#lat_sales").html(latitude_sales);
+       $("#long_sales").html(longitude_sales);
+       $("#akurasi_sales").html(accuracy_sales);
 
        console.log('Informasi Sales :');
         console.log(latitude_sales);
        console.log(longitude_sales);
          console.log(accuracy_sales);
 
-			//  var hasil = "Latitude: " + latt + "\n Longitude: " + long + "\n Accuracy: "+accuracy;
-      //  console.log(hasil);
-			// swal("Lokasi Di Temukan ",hasil, "success");
 			var lattlong = new google.maps.LatLng(latt, long); 
 			var OPTions = { 
 				center: lattlong, 
@@ -292,8 +359,7 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAznbmf9fxvDrf8Fnv8MPq09mQ
 				mapTypeControl: true, 
 				navigationControlOptions: {style:google.maps.NavigationControlStyle.SMALL} 
 			} 
-			var mapg = new google.maps.Map(document.getElementById("demo2"), OPTions); 
-			$('#modal-maps').modal('show');
+			var mapg = new google.maps.Map(document.getElementById("lokasi_sales"), OPTions); 
 			var markerg = 
 			new google.maps.Marker({position:lattlong, map:mapg, title:"You are here!"}); 
 
@@ -304,9 +370,7 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAznbmf9fxvDrf8Fnv8MPq09mQ
       kesimpulan();
 		} 
 
-		
-		
-		function errHand(err) { 
+    function errHand_sales(err) { 
 			switch(err.code) { 
 				case err.PERMISSION_DENIED: 
 					result.innerHTML = "The application doesn't have the permission" + 
@@ -352,10 +416,24 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAznbmf9fxvDrf8Fnv8MPq09mQ
 
     function kesimpulan(){
         if(jarak<=result_acc){
-          swal("Success ","Anda berada di toko", "success");
+           var alert_sukses = '\<div class="alert alert-success alert-dismissible" role="alert">\
+                               Lokasi diterima , anda berada di toko!\
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">\
+                                  <i class="ti-close"></i>\
+                                </button>\
+                               </div>';
+          $("#alert").append(alert_sukses);
+          swal("Lokasi diterima! ","Anda berada di toko", "success");
         }
         else{
-          swal("Maaf! ","Anda tidak berada di toko", "error");
+          var danger = '\<div class="alert alert-danger alert-dismissible" role="alert">\
+                              Lokasi ditolak , anda tidak berada di toko!\
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">\
+                                  <i class="ti-close"></i>\
+                                </button>\
+                               </div>';
+          $("#alert").append(danger);
+          swal("Lokasi ditolak! ","Anda tidak berada di toko", "error");
         }
     }
 

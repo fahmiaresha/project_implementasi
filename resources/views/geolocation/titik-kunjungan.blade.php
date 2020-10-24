@@ -417,7 +417,7 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAznbmf9fxvDrf8Fnv8MPq09mQ
     function kesimpulan(){
         if(jarak<=result_acc){
            var alert_sukses = '\<div class="alert alert-success alert-dismissible" role="alert">\
-                               Lokasi diterima , anda berada di toko!\
+           <i class="fa fa-check-circle"></i> Lokasi diterima , anda berada di toko!\
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">\
                                   <i class="ti-close"></i>\
                                 </button>\
@@ -427,7 +427,7 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAznbmf9fxvDrf8Fnv8MPq09mQ
         }
         else{
           var danger = '\<div class="alert alert-danger alert-dismissible" role="alert">\
-                              Lokasi ditolak , anda tidak berada di toko!\
+          <i class="fa fa-warning"></i> Lokasi ditolak , anda tidak berada di toko!\
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">\
                                   <i class="ti-close"></i>\
                                 </button>\

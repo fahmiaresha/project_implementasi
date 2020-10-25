@@ -170,13 +170,13 @@
                      dataType : "json",
                      success:function(data)
                      {
-                       if(data.length==0){
-                        console.log('masuk if');
-                         alert('data-kosong');
+                      //  if(data.length==0){
+                      //   console.log('masuk if');
+                      //    alert('data-kosong');
                          
-                       }
-                       else{
-                         console.log('masuk else');
+                      //  }
+                      //  else{
+                      //    console.log('masuk else');
                         console.log(data);
                         jQuery.each(data, function(key,value){
                            console.log('masuk jquery eachhh');
@@ -212,7 +212,7 @@
                             $("#tabel").append(append_html);
                         }); 
                         
-                       }
+                      //  }
                      }
                   });
     }

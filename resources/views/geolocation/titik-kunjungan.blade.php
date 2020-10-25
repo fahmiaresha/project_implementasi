@@ -38,22 +38,26 @@
     
     <div class="tabel" id="details_toko"></div>
 
-    <div class="col-md-6 col-sm-6" id="bagian1">
+    <div class="col-md-12 col-sm-12" id="bagian1">
     <div class="card">
    <div class="card-body">
     
-   <button type="button" class="close btn btn-danger" aria-label="Close" id="resetButton" style="margin-bottom:-10px; padding:6px;  border-radius:70%;">
+   <!-- <button type="button" class="close btn btn-danger" aria-label="Close" id="resetButton" style="margin-bottom:-10px; padding:6px;  border-radius:70%;">
   <span aria-hidden="true">&times;</span>
-</button>
+</button> -->
     <div>
-        <video id="video" width="415" height="250" style="border: 1px solid gray; " >
+    <center>
+   
+        <video id="video" style="height: 380px; position: relative; overflow: hidden; border: 1px solid gray;" >
         </video>
+        </center>
     </div>
 
+  <br>
 
     <div id="sourceSelectPanel" style="display:none">
         <select class="select2-example" id="sourceSelect" id="kelurahan">
-        <option disabled selected="true" >Select Camera</option>
+        <option disabled selected="true"style="" >Select Camera</option>
         </select>
     </div>
 
@@ -61,8 +65,8 @@
        
     <br>
     <center>
-       <button type="button" class="btn btn-outline-success" id="startButton" style="padding-left:20px; padding-right:20px">Start Scanning</button>
-
+       <button type="button" class="btn btn-outline-success" id="startButton" style="padding-left:20px; padding-right:20px; margin-right:15px;">Start Scanning</button>
+       <button type="button" class="btn btn-outline-danger" id="resetButton" style="padding-left:20px; padding-right:20px">Reset Scanning</button>
     </center>
       
    </div>
@@ -182,6 +186,12 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAznbmf9fxvDrf8Fnv8MPq09mQ
                      dataType : "json",
                      success:function(data)
                      {
+                      if(data.length==0){
+                        console.log('masuk if');
+                        swal("Maaf! ","Barcode tidak ditemukan!", "error");
+                        
+                       }
+                       else{
                         console.log(data);
                         jQuery.each(data, function(key,value){
                            
@@ -282,7 +292,7 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAznbmf9fxvDrf8Fnv8MPq09mQ
 
                         }); 
                         getlocation_toko();
-                      
+                     }
                      }
                   });
     }

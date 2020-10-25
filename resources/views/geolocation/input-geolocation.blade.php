@@ -89,7 +89,7 @@
 		</div>
 
         <button  class="btn btn-outline-primary mb-2" type="button" onclick="getlocation();">Geolocation</button> 
-		 <button type="submit" class="btn btn-outline-success mb-2">Submit</button>
+		 <button type="submit" class="btn btn-outline-success mb-2 ml-1">Submit Data</button>
         </div>
     </div>
 	</form>

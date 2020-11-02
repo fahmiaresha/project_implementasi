@@ -206,9 +206,6 @@
                         </a>
                     </li>
 
-
-               
-
                     <li>
                         <a href="#">
                         <span class="nav-link-icon" >
@@ -229,6 +226,15 @@
                             <a @if(request()->segment(1) == 'titik-kunjungan') class="active" @endif href="{{ route('titik-kunjungan') }}">Titik Kunjungan</a>
                             </li>
                         </ul>
+                    </li>
+
+                    <li>
+                        <a @if(request()->segment(1) =='user-manual') class="active" @endif href="{{ route('user-manual') }}" >
+                    <span class="nav-link-icon">
+                    <i class="fa fa-download"></i>
+                    </span>
+                            <span>User Manual</span>
+                        </a>
                     </li>
 
 

@@ -61,10 +61,7 @@
                    
                     <td>{{$c->ID_KELURAHAN}}</td>
                     </tr>
-
-                   
                     @endforeach
-                
                 </tbody>
                 </table>
         </div>
@@ -75,8 +72,11 @@
 @section('script')
  <!-- Javascript -->
  <script src="vendors/lightbox/jquery.magnific-popup.min.js"></script>
+
+ 
 <script>
     $(document).ready(function (){
+
     $('#myTable').DataTable();
 
 

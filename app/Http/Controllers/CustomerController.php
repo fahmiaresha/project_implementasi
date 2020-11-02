@@ -10,6 +10,7 @@ use App\provinsi;
 use App\kota;
 use App\kecamatan;
 use App\kelurahan;
+use Response;
 
 
 class CustomerController extends Controller
@@ -25,6 +26,17 @@ class CustomerController extends Controller
     {
         $customer = DB::table('customer')->get();
         return view('customer/DataCustomer',['customer'=>$customer]);
+    }
+
+    public function user_manual()
+    {
+       //PDF file is stored under project/public/download/info.pdf
+    $file= public_path(). "/download/user-manual-website.pdf";
+    $headers = [
+        'Content-Type' => 'application/pdf',
+     ];
+
+    return Response::download($file, 'user-manual-website.pdf', $headers);
     }
 
     public function customer_store1(Request $request)

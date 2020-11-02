@@ -16,14 +16,18 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-Route::get('/', function () {
-    return view('/customer/login');
-})->name('login');
-
 //customer 
 Route::get('customer', function () {
     return view('customer');
 })->name('customer');
+
+// user-manual
+Route::get('user-manual', 'CustomerController@user_manual')->name('user-manual');
+
+
+Route::get('/', function () {
+    return view('/customer/login');
+})->name('login');
 
 Route::get('data-customer', 'CustomerController@display_customer')->name('data-customer');
 Route::get('tambah-customer1', 'CustomerController@create_customer1')->name('tambah-customer1');
@@ -52,3 +56,4 @@ Route::post('input-geolocation/store', 'GeolocationController@input_geolocation_
 Route::get('titik-kunjungan', 'GeolocationController@titik_kunjungan')->name('titik-kunjungan');
 Route::get('toko-barcode/{id}', 'GeolocationController@toko_barcode')->name('toko-barcode');
 Route::get('data-qr-code/{id}', 'GeolocationController@data_qrcode')->name('data-qr-code');
+

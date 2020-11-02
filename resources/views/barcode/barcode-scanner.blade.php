@@ -159,7 +159,6 @@
     })
 
     function data_barcode(){
-        
         console.log('masuk data_barcode');
         var hasil= document.getElementById('result').value;
         console.log('tampil variable hasil');
@@ -170,13 +169,6 @@
                      dataType : "json",
                      success:function(data)
                      {
-                      //  if(data.length==0){
-                      //   console.log('masuk if');
-                      //    alert('data-kosong');
-                         
-                      //  }
-                      //  else{
-                      //    console.log('masuk else');
                         console.log(data);
                         jQuery.each(data, function(key,value){
                            console.log('masuk jquery eachhh');

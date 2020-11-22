@@ -11,7 +11,6 @@
 @endsection
 
 @section('content')
-
     <div class="page-header d-md-flex justify-content-between">
         <div>
             <h3>Customer</h3>
@@ -43,13 +42,15 @@
                     </thead>
                 <tbody>
                     @foreach($customer as $c)
-                   
+                    
                     <tr>
                     <td>{{$c->ID_CUSTOMER}}</td>
                     <td>{{$c->NAMA}}</td>
                     <td>{{$c->ALAMAT}}</td>
                     @if($c->FOTO!=null)
-                    <td>{{$c->FOTO}}</td>
+                    <td>
+                    {{$c->FOTO}}
+                    </td>
                     @else
                         <td class="image-popup" href="{{ url($c->FILE_PATH) }}" >
                         <center>

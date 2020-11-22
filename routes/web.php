@@ -12,22 +12,21 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
-
-//customer 
-Route::get('customer', function () {
-    return view('customer');
-})->name('customer');
-
-// user-manual
-Route::get('user-manual', 'CustomerController@user_manual')->name('user-manual');
-
 
 Route::get('/', function () {
     return view('/customer/login');
 })->name('login');
+
+//login-google
+Route::get('login/google', 'GoogleController@redirectToProvider');
+Route::get('login/google/callback', 'GoogleController@handleProviderCallback');
+Route::get('logout', 'GoogleController@logout');
+
+
+
+// if(Session::get('id')!=null){
+// user-manual
+Route::get('user-manual', 'CustomerController@user_manual')->name('user-manual');
 
 Route::get('data-customer', 'CustomerController@display_customer')->name('data-customer');
 Route::get('tambah-customer1', 'CustomerController@create_customer1')->name('tambah-customer1');
@@ -56,4 +55,6 @@ Route::post('input-geolocation/store', 'GeolocationController@input_geolocation_
 Route::get('titik-kunjungan', 'GeolocationController@titik_kunjungan')->name('titik-kunjungan');
 Route::get('toko-barcode/{id}', 'GeolocationController@toko_barcode')->name('toko-barcode');
 Route::get('data-qr-code/{id}', 'GeolocationController@data_qrcode')->name('data-qr-code');
+
+    
 

@@ -107,26 +107,27 @@
                         <li class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" title="User menu" data-toggle="dropdown">
                                 <figure class="avatar avatar-sm">
-                                    <img src="{{ url('assets/media/image/user/man_avatar3.jpg') }}"
+                                    <img src="{{Session::get('foto')}}"
                                          class="rounded-circle"
                                          alt="avatar">
                                 </figure>
-                                <span class="ml-2 d-sm-inline d-none">M.Fahmi Aresha</span>
+                                <span class="ml-2 d-sm-inline d-none">{{Session::get('nama')}}</span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-big">
                                 <div class="text-center py-4">
                                     <figure class="avatar avatar-lg mb-3 border-0">
-                                        <img src="{{ url('assets/media/image/user/man_avatar3.jpg') }}"
+                                        <img src="{{Session::get('foto')}}"
                                              class="rounded-circle" alt="image">
                                     </figure>
-                                    <h5 class="text-center">M.Fahmi Aresha</h5>
-                                    <div class="mb-3 small text-center text-muted">@fahmiaresha</div>
-                                    <!-- <a href="#" class="btn btn-outline-light btn-rounded">Manage Your Account</a> -->
+                                    <h5 class="text-center">{{Session::get('nama')}}</h5>
+                                    <h7 class="text-center">{{Session::get('id')}}</h5>
+                                    <div class="div">
+                                    <h7 class="text-center">{{Session::get('email')}}</h5>
+                                    </div>
+                                    
                                 </div>
                                 <div class="list-group">
-                                 
-                                    <a href="" class="list-group-item text-danger"
-                                       data-sidebar-target="#settings">Sign Out!</a>
+                                    <a href="/logout" class="list-group-item" >Sign Out!</a>
                                 </div>
                                 <div class="p-4">
                                   
@@ -312,6 +313,7 @@
 <script src="{{ url('assets/js/app.min.js') }}"></script>
 
 <script>
+
         var c = 0; max_count = 10; logout = true;
         startTimer();
 
@@ -323,7 +325,7 @@
                 $('#timer').html(max_count);
                 $('#logout_popup').modal('show');
                 startCount();
-            }, 30*601000); //, 30 menit=30*60*1000, 
+            }, 30*60*1000); //, 30 menit=30*60*1000, 
         }
 
         function resetTimer(){
@@ -337,7 +339,7 @@
             $('#logout_popup').modal('hide');
             console.log('Your time is expired');
             //pindah halaman-login
-            window.location = "/";
+            window.location = "/logout";
         }
 
         function timedCount() {
@@ -376,6 +378,7 @@
 
        
     </script>
+
 
 </body>
 </html>

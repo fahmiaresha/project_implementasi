@@ -11,6 +11,7 @@ use App\kota;
 use App\kecamatan;
 use App\kelurahan;
 use Response;
+use Illuminate\Support\Facades\Session;
 
 
 class CustomerController extends Controller
@@ -19,9 +20,7 @@ class CustomerController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
-     */
-      
-
+     */    
     public function display_customer()
     {
         $customer = DB::table('customer')->get();
@@ -65,7 +64,7 @@ class CustomerController extends Controller
         'FILE_PATH' => '/storage'.$path,
         'ID_KELURAHAN'=> $request->kelurahan,
         ]);
-        return redirect('/tambah-customer2')->with('insert','berhasil');
+        return redirect('/tambah-customer2');
    
     }
 
@@ -112,6 +111,7 @@ class CustomerController extends Controller
      
         return json_encode($kelurahan);
       }
+    
   
     
 

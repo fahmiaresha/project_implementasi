@@ -17,3 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('show-barang', 'ApiController@show');
+Route::post('input-barang', 'ApiController@insert');
+Route::put('update-barang/{id}', 'ApiController@update');

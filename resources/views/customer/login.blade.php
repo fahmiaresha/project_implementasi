@@ -51,10 +51,33 @@
    
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+<!-- custom login google -->
+<!-- Minified CSS and JS -->
+<link   rel="stylesheet" 
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
+        crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" 
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" 
+        crossorigin="anonymous">
+</script>
+
 </head>
 <body>
 
-
+@if(session('alert_gagal_login'))
+      <font size="4"> 
+      <script>
+     Swal.fire({
+        //   timer: 2000,
+          icon: 'error',
+          title: 'Maaf',
+          text: 'Anda harus menggunakan email unair !',
+        })
+    </script>
+    </font>
+@endif
 
 @if(session('salah_password'))
       <font size="4"> 
@@ -141,6 +164,22 @@
                         </button>
                     </div>
                     </a>
+                    <br>
+                    <center>
+                   
+                    <div class="row">
+                    <div class="col-md-12">
+                        <a class="btn btn-dark" href="{{ url('login/google') }}" >
+                        <img width="20px" style="margin-right:5px" alt="Google sign-in" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
+                       <font size="2" style=>Login with Google</font>
+                        </a>
+                    </div>
+                    </div>
+                    </center>
+
+                    <!-- <a href="{{ url('login/google') }}" >
+                            Sign in With Google
+                    </a> -->
                 <!-- </form>	 -->
             <!-- <div class="coba mt-3" style="text-align: right;">
                     <a href="/lupapassword"><font size="2" style="color:skyblue">Lupa Password ?</font></a>

@@ -5,13 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
-
+use App\Imports\CustomerImport;
+use App\Imports\Customer2Import;
 use App\provinsi;
 use App\kota;
 use App\kecamatan;
 use App\kelurahan;
 use Response;
 use Illuminate\Support\Facades\Session;
+use Excel;
+use Maatwebsite\Excel\Validators\ValidationException;
 
 
 class CustomerController extends Controller
@@ -50,6 +53,32 @@ class CustomerController extends Controller
    
     }
 
+    public function customer_excel_store(Request $request)
+    {
+        $this->validate($request, [
+            'file' => 'required|mimes:xls,xlsx'
+        ]);
+            // try{
+                $file = $request->file('file')->store('import');
+                $import = new CustomerImport;
+                $import->import($file);
+                // dump($import->failures());
+            // }
+            // catch(\Exception $e){
+            //     // return redirect()->back()->with(['success' => 'Wrong format in some coloumn']);
+            //     return redirect('/data-customer')->with('excel_eror','gagal');
+            // }
+
+            if($import->failures()->isNotEmpty()) {
+                return back()->withFailures($import->failures());
+            }
+            else{
+                // return redirect()->back()->with(['success' => 'Upload success']);
+                return redirect('/data-customer')->with('excel_success','sukses');
+            }
+          
+      
+    }
 
     public function customer_store2(Request $request)
     {
@@ -69,15 +98,15 @@ class CustomerController extends Controller
     }
 
     public function display_image($filename){
-    $path =  storage_public('storage/file_foto/' . $filename);
-    if (!File::exists($path)) {
-        abort(404);
-    }
-    $file = File::get($path);
-    $type = File::mimeType($path);
-    $response = Response::make($file, 200);
-    $response->header("Content-Type", $type);
-    return $response;
+        $path =  storage_public('storage/file_foto/' . $filename);
+        if (!File::exists($path)) {
+            abort(404);
+        }
+        $file = File::get($path);
+        $type = File::mimeType($path);
+        $response = Response::make($file, 200);
+        $response->header("Content-Type", $type);
+        return $response;
     }
 
     public function create_customer1()

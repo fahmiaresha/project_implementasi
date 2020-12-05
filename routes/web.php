@@ -29,6 +29,8 @@ Route::get('logout', 'GoogleController@logout');
 Route::get('user-manual', 'CustomerController@user_manual')->name('user-manual');
 
 Route::get('data-customer', 'CustomerController@display_customer')->name('data-customer');
+Route::post('customer-excel-store', 'CustomerController@customer_excel_store');
+
 Route::get('tambah-customer1', 'CustomerController@create_customer1')->name('tambah-customer1');
 Route::get('tambah-customer2', 'CustomerController@create_customer2')->name('tambah-customer2');
 

@@ -38,7 +38,7 @@ class CustomerImport implements ToModel,WithHeadingRow
     public function rules(): array
     {
         return [
-            '*.id_customer' => ['unique:Customer,ID_CUSTOMER']
+            '*.id_customer' => ['unique:Customer,id_customer']
         ];
     }
 

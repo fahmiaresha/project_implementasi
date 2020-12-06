@@ -58,22 +58,19 @@ class CustomerController extends Controller
         $this->validate($request, [
             'file' => 'required|mimes:xls,xlsx'
         ]);
-            // try{
+            try{
                 $file = $request->file('file')->store('import');
                 $import = new CustomerImport;
                 $import->import($file);
                 // dump($import->failures());
-            // }
-            // catch(\Exception $e){
-            //     // return redirect()->back()->with(['success' => 'Wrong format in some coloumn']);
-            //     return redirect('/data-customer')->with('excel_eror','gagal');
-            // }
-
+            }
+            catch(\Exception $e){
+                return redirect('/data-customer')->with('excel_eror','gagal');
+            }
             if($import->failures()->isNotEmpty()) {
                 return back()->withFailures($import->failures());
             }
             else{
-                // return redirect()->back()->with(['success' => 'Upload success']);
                 return redirect('/data-customer')->with('excel_success','sukses');
             }
           

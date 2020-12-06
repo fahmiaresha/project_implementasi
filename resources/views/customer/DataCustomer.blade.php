@@ -34,7 +34,7 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
             <div class="modal-header">
-                <h6 class="modal-title">Error</h6>
+                <h6 class="modal-title">Data Excel</h6>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <i class="ti-close"></i>
                 </button>
@@ -77,9 +77,39 @@
                         </table>
                     @endif
             </div>
-            <div class="modal-footer">
+            <!-- <div class="modal-footer">
                 <button type="button" class="btn btn-primary"  data-dismiss="modal">Close</button>
+            </div> -->
             </div>
+        </div>
+        </div>
+
+        <div class="modal" tabindex="-1" role="dialog" id="modal_eror1">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Import errors</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+            <!-- <div class="alert alert-danger alert-dismissible" role="alert">
+          <i class="fa fa-warning"></i> Sorry , please check your file !
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                  <i class="ti-close"></i>
+                                </button>
+            </div> -->
+                        <div class="alert alert-danger">
+                            @foreach ($errors->all() as $error)
+                                {{ $error }}
+                            @endforeach
+                        </div>
+            </div>
+            <!-- <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div> -->
             </div>
         </div>
         </div>
@@ -101,13 +131,13 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    @if (isset($errors) && $errors->any())
+                    <!-- @if (isset($errors) && $errors->any())
                         <div class="alert alert-danger">
                             @foreach ($errors->all() as $error)
                                 {{ $error }}
                             @endforeach
                         </div>
-                    @endif
+                    @endif -->
 
 
                   
@@ -207,7 +237,7 @@ $('.image-popup').magnificPopup({
 
 @if (session('excel_eror'))
 <script>
-swal("Oops!","Wrong format in some column!","error");
+swal("Oops!","Please check your excel file","error");
 </script>
 @endif
 
@@ -220,8 +250,12 @@ swal("Success!","Data excel berhasil ditambahkan!","success");
 @if(session()->has('failures'))
 <script>
 $('#modal_eror').modal('show');
-// swal("Sorry!","Please check your excel file!","error");
 </script>
 @endif
 
+@if (isset($errors) && $errors->any())
+<script>
+$('#modal_eror1').modal('show');
+</script>
+@endif
 @endsection

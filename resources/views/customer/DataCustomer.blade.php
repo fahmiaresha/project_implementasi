@@ -40,16 +40,21 @@
                 </button>
             </div>
             <div class="modal-body">
+            @if(session()->has('failures'))
+                @foreach (session()->get('failures') as $validation)
+                    @php $x=$loop->iteration; @endphp
+                @endforeach
+            
             <div class="alert alert-danger alert-dismissible" role="alert">
-          <i class="fa fa-warning"></i> Sorry , please check your excel file !
+            <i class="fa fa-warning"></i> {{$x}} errors found , Please check your excel file !
+
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                   <i class="ti-close"></i>
                                 </button>
-                               </div>
-            @if(session()->has('failures'))
+            </div>
+                    @if(session()->has('failures'))
                         <table class="table">
                             <tr>
-                                <th>#</th>
                                 <th>Row</th>
                                 <th>Attribute</th>
                                 <th>Value</th>
@@ -58,7 +63,6 @@
                             </tr>
                             @foreach (session()->get('failures') as $validation)
                                 <tr>
-                                    <td>{{$loop->iteration}}</td>
                                     <td>{{ $validation->row() }}</td>
                                     <td>{{ $validation->attribute() }}</td>
                                     <td>
@@ -76,6 +80,7 @@
                             @endforeach
                         </table>
                     @endif
+            @endif
             </div>
             <!-- <div class="modal-footer">
                 <button type="button" class="btn btn-primary"  data-dismiss="modal">Close</button>

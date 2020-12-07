@@ -62,20 +62,23 @@ class CustomerController extends Controller
                 $file = $request->file('file')->store('import');
                 $import = new CustomerImport;
                 $import->import($file);
-                // dump($import->failures());
             }
-            catch(\Exception $e){
-                return redirect('/data-customer')->with('excel_eror','gagal');
-            }
+            catch(\Exception $e){     
+                // echo 'gagal';
+                  return redirect('/data-customer')->with('excel_eror','gagal');
+            }  
             if($import->failures()->isNotEmpty()) {
                 return back()->withFailures($import->failures());
             }
             else{
-                return redirect('/data-customer')->with('excel_success','sukses');
-            }
-          
-      
+                // echo 'sukses';                
+                 return redirect('/data-customer')->with('excel_success','sukses');
+            } 
+        
     }
+
+    
+   
 
     public function customer_store2(Request $request)
     {
@@ -140,6 +143,8 @@ class CustomerController extends Controller
     
   
     
+    
+
 
     /**
      * Show the form for creating a new resource.

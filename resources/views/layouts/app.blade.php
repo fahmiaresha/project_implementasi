@@ -18,6 +18,8 @@
 
 <!-- App css -->
     <link rel="stylesheet" href="{{ url('assets/css/app.min.css') }}" type="text/css">
+    
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -210,7 +212,8 @@
                     <li>
                         <a href="#">
                         <span class="nav-link-icon" >
-                        <i data-feather="map-pin" style="margin-left:-3px"></i>
+                        <i class="fas fa-map-marked-alt"></i>
+                        <!-- <i data-feather="map-pin" style="margin-left:-3px"></i> -->
                     </span>
                             <span style="margin-left:-4px;">Kunjungan Toko</span>
                         </a>
@@ -226,6 +229,25 @@
                             <li>
                             <a @if(request()->segment(1) == 'titik-kunjungan') class="active" @endif href="{{ route('titik-kunjungan') }}">Titik Kunjungan</a>
                             </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                        <span class="nav-link-icon" >
+                        <i class="far fa-clipboard"></i>
+                    </span>
+                            <span>Scoreboard</span>
+                        </a>
+                        <ul>
+                             <li>
+                            <a @if(request()->segment(1) == 'control-papan') class="active" @endif href="{{ route('control-papan') }}">Control Papan</a>
+                            </li>
+
+                            <li>
+                            <a @if(request()->segment(1) == 'tampilan-papan') class="active" @endif href="{{ route('tampilan-papan') }}">Tampilan</a>
+                            </li>
+
                         </ul>
                     </li>
 

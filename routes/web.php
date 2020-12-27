@@ -22,7 +22,9 @@ Route::get('login/google', 'GoogleController@redirectToProvider');
 Route::get('login/google/callback', 'GoogleController@handleProviderCallback');
 Route::get('logout', 'GoogleController@logout');
 
-
+//scoreboard
+Route::get('control-papan', 'ScoreboardController@control_papan')->name('control-papan');
+Route::get('tampilan-papan', 'ScoreboardController@tampilan_papan')->name('tampilan-papan');
 
 // if(Session::get('id')!=null){
 // user-manual
@@ -57,6 +59,12 @@ Route::post('input-geolocation/store', 'GeolocationController@input_geolocation_
 Route::get('titik-kunjungan', 'GeolocationController@titik_kunjungan')->name('titik-kunjungan');
 Route::get('toko-barcode/{id}', 'GeolocationController@toko_barcode')->name('toko-barcode');
 Route::get('data-qr-code/{id}', 'GeolocationController@data_qrcode')->name('data-qr-code');
+
+//sse
+Route::get('sse', 'SseController@myMethod')->name('sse');
+
+
+
 
     
 

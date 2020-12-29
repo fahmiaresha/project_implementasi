@@ -26,8 +26,39 @@ Route::get('logout', 'GoogleController@logout');
 Route::get('control-papan', 'ScoreboardController@control_papan')->name('control-papan');
 Route::get('tampilan-papan', 'ScoreboardController@tampilan_papan')->name('tampilan-papan');
 
-// if(Session::get('id')!=null){
-// user-manual
+//update-nama
+Route::post('store-home','ScoreboardController@store_home');
+Route::post('store-away','ScoreboardController@store_away');
+
+//update-skor-home
+Route::post('store-homeplus2','ScoreboardController@scorehomeplus2');
+Route::post('store-homeminus2','ScoreboardController@scorehomeminus2');
+Route::post('store-homeplus3','ScoreboardController@scorehomeplus3');
+Route::post('store-homeminus3','ScoreboardController@scorehomeminus3');
+
+//update-skor-away
+Route::post('store-awayplus2','ScoreboardController@scoreawayplus2');
+Route::post('store-awayminus2','ScoreboardController@scoreawayminus2');
+Route::post('store-awayplus3','ScoreboardController@scoreawayplus3');
+Route::post('store-awayminus3','ScoreboardController@scoreawayminus3');
+
+//update-sound
+Route::post('store-sound1','ScoreboardController@store_sound1');
+Route::post('store-sound2','ScoreboardController@store_sound2');
+Route::post('store-sound3','ScoreboardController@store_sound3');
+Route::post('update-sound','ScoreboardController@update_sound');
+
+//update-sse-database
+Route::get('update-sse','ScoreboardController@update_sse');
+
+//get-skor-all
+Route::get('get-score','ScoreboardController@get_score');
+
+
+// Route::get('testpost','ScoreboardController@test_post');
+
+
+
 Route::get('user-manual', 'CustomerController@user_manual')->name('user-manual');
 
 Route::get('data-customer', 'CustomerController@display_customer')->name('data-customer');
@@ -60,8 +91,7 @@ Route::get('titik-kunjungan', 'GeolocationController@titik_kunjungan')->name('ti
 Route::get('toko-barcode/{id}', 'GeolocationController@toko_barcode')->name('toko-barcode');
 Route::get('data-qr-code/{id}', 'GeolocationController@data_qrcode')->name('data-qr-code');
 
-//sse
-Route::get('sse', 'SseController@myMethod')->name('sse');
+
 
 
 

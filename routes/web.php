@@ -26,7 +26,7 @@ Route::get('logout', 'GoogleController@logout');
 Route::get('control-papan', 'ScoreboardController@control_papan')->name('control-papan');
 Route::get('tampilan-papan', 'ScoreboardController@tampilan_papan')->name('tampilan-papan');
 
-//update-nama
+//update-name
 Route::post('store-home','ScoreboardController@store_home');
 Route::post('store-away','ScoreboardController@store_away');
 
@@ -48,6 +48,15 @@ Route::post('store-sound2','ScoreboardController@store_sound2');
 Route::post('store-sound3','ScoreboardController@store_sound3');
 Route::post('update-sound','ScoreboardController@update_sound');
 
+//insert-menit-detik
+Route::post('update-menit-detik','ScoreboardController@update_menit_detik');
+
+//update-timer
+Route::post('reset-menit-detik','ScoreboardController@reset_menit_detik');
+Route::post('resume-menit-detik','ScoreboardController@resume_menit_detik');
+Route::post('stop-menit-detik','ScoreboardController@stop_menit_detik');
+
+
 //update-sse-database
 Route::get('update-sse','ScoreboardController@update_sse');
 
@@ -56,6 +65,8 @@ Route::get('get-score','ScoreboardController@get_score');
 
 
 // Route::get('testpost','ScoreboardController@test_post');
+
+// Route::get('hitungmundur','ScoreboardController@test_hitung_mundur');
 
 
 

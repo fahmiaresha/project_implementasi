@@ -243,7 +243,8 @@
                              <li>
                             <a @if(request()->segment(1) == 'control-papan') class="active" @endif href="{{ route('control-papan') }}">Control Papan</a>
                             </li>
-
+                            <!-- hitungmundur -->
+                            
                             <li>
                             <a @if(request()->segment(1) == 'tampilan-papan') class="active" @endif href="{{ route('tampilan-papan') }}">Tampilan</a>
                             </li>

@@ -25,6 +25,62 @@ class ScoreboardController extends Controller
             });
         $response->send();
     }
+
+    public function update_menit_detik(Request $request){
+        DB::table('scoreboard')->where('id','1')->update([
+            'menit' => $request->input('name_menit'),
+            'detik' => $request->input('name_detik')  
+       ]);
+
+       return response()->json(
+        [
+          'success' => true,
+          'message' => 'Data inserted successfully'
+        ]);
+    }
+
+    public function reset_menit_detik(Request $request){
+        DB::table('scoreboard')->where('id','1')->update([
+            'status_waktu' => 1,
+            'menit' => "10",
+            'detik' => "00" 
+       ]);
+
+       return response()->json(
+        [
+          'success' => true,
+          'message' => 'Data inserted successfully'
+        ]);
+    }
+
+    public function resume_menit_detik(Request $request){
+        DB::table('scoreboard')->where('id','1')->update([
+            'status_waktu' => 1
+       ]);
+
+       return response()->json(
+        [
+          'success' => true,
+          'message' => 'Data inserted successfully'
+        ]);
+    }
+
+    public function stop_menit_detik(Request $request){
+        DB::table('scoreboard')->where('id','1')->update([
+            'status_waktu' => 0
+       ]);
+
+       return response()->json(
+        [
+          'success' => true,
+          'message' => 'Data inserted successfully'
+        ]);
+    }
+    
+
+    public function test_hitung_mundur(){
+        return view('hitung_mundur');
+    }
    
 
     public function control_papan(){

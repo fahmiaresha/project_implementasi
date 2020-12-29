@@ -135,19 +135,19 @@
 <div class="form-row mt-3">
     <div class="col-md-2">
         <form action="/store-start-timer" method="POST">
-            <button type="submit" class="btn btn-outline-primary" name="homeplus3">Start Timer</button>
+            <button type="submit" class="btn btn-outline-primary btn-submit-start-timer" name="start_timer">Start Timer</button>
         </form>
     </div>
 
     <div class="col-md-2">
         <form action="/store-resume-timer" method="POST">
-            <button type="submit" class="btn btn-outline-warning" name="homeminus2">Resume Timer</button>
+            <button type="submit" class="btn btn-outline-warning btn-submit-resume-timer" name="resume_timer">Resume Timer</button>
         </form>
     </div>
 
     <div class="col-md-2">
         <form action="/store-stop-timer" method="POST">
-            <button type="submit" class="btn btn-outline-danger" name="homeminus2">Stop Timer</button>
+            <button type="submit" class="btn btn-outline-danger btn-submit-stop-timer" name="stop_timer">Stop Timer</button>
         </form>
     </div>
 
@@ -662,5 +662,103 @@
     });
 </script>
 
+<script>
+ $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    $(".btn-submit-start-timer").click(function(e){
+        console.log('start-timer');
+        e.preventDefault();
+
+        var url = '{{ url('reset-menit-detik') }}';
+
+        $.ajax({
+           url:url,
+           method:'POST',
+           data:{
+              
+           },
+           success:function(response){
+              if(response.success){
+                  alert(response.message);
+              }else{
+                  alert("Error")
+              }
+           },
+           error:function(error){
+              console.log(error)
+           }
+        });
+    });
+</script>
+
+<script>
+ $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    $(".btn-submit-resume-timer").click(function(e){
+        console.log('resume-timer');
+        e.preventDefault();
+
+        var url = '{{ url('resume-menit-detik') }}';
+
+        $.ajax({
+           url:url,
+           method:'POST',
+           data:{
+              
+           },
+           success:function(response){
+              if(response.success){
+                  alert(response.message);
+              }else{
+                  alert("Error")
+              }
+           },
+           error:function(error){
+              console.log(error)
+           }
+        });
+    });
+</script>
+
+<script>
+ $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    $(".btn-submit-stop-timer").click(function(e){
+        console.log('stop-timer');
+        e.preventDefault();
+
+        var url = '{{ url('stop-menit-detik') }}';
+
+        $.ajax({
+           url:url,
+           method:'POST',
+           data:{
+              
+           },
+           success:function(response){
+              if(response.success){
+                  alert(response.message);
+              }else{
+                  alert("Error")
+              }
+           },
+           error:function(error){
+              console.log(error)
+           }
+        });
+    });
+</script>
 
 @endsection

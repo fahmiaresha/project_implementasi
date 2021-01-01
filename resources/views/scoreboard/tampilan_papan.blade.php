@@ -1,11 +1,286 @@
-@extends('layouts.app')
-@section('title','Tampilan Scoreboard')
-@section('head') 
-<meta name="csrf-token" content="{{ csrf_token() }}"> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scoreboard Basket</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}"> 
 
-@endsection
 
-@section('content')
+    <style>
+    .largebox-div {
+  background-color:#000;
+   color:#fff; 
+  width:800px;
+  height: 425px;
+  border: 2px solid blue;
+  margin-left: auto;
+    margin-right: auto;
+  border-radius:10px;
+}
+.box2{
+  background-color:#000;
+  top:50%;
+  left:60%;
+  margin-top:-44px;
+  margin-left:-60px;
+    color:#fff;
+    width:50%;
+}
+.child-div{
+  background-color:#fff;
+  width:58%;
+  height: 200px;
+  margin-left: 285px;
+    margin-right:-60px;
+  margin-top:-418px;
+    top:50%; 
+}
+.next-div{
+  background-color:#fff;
+  width:58%;
+  height: 200px;
+  margin-left: 285px;
+    margin-right:-60px;
+  margin-top:8px;
+    top:50%; 
+}
+.home-team{
+   background-color:black;
+  width:12%;
+  height: 30px;
+  color:#fff;
+  margin-left: 315px;
+    margin-right:-800px;
+  margin-top:-394px;
+    top:50%; 
+  text-align:center;
+}
+.home-score{
+  background-color:#fff;
+  border: 3px solid black;
+  width:11.5%;
+  height: 100px;
+  margin-left: 315px;
+    margin-right:-30px;
+  margin-top:-32px;
+    top:80%;
+  color:#b9bdbf;
+  text-align:center;
+}
+.away-team{
+    background-color:black;
+  width:12%;
+  height: 30px;
+  color: #fff;
+  margin-left: 870px;
+    margin-right:-60px;
+  margin-top:-30px;
+    top:50%; 
+  text-align:center;
+}
+.away-score{
+   background-color:#fff;
+  width:11.5%;
+  height: 100px;
+  margin-left: 870px;
+    margin-right:-30px;
+  margin-top:-106px;
+    top:80%;
+  color:#b9bdbf;
+  border:3px solid black;
+  text-align:center;
+}
+.timer{
+   background-color:grey;
+  width:16%;
+  height: 80px;
+  margin-left: 560px;
+    margin-right:90px;
+  margin-top:-30px;
+    top:50%; 
+  text-align:center;
+}
+.twodigit{
+     background-color:#000;
+  width:5%;
+  height: 60px;
+  margin-left: 575px;
+    margin-right:90px;
+  margin-top:-70px;
+    top:50%; 
+ 
+  text-align:center;
+}
+.nexttwodigit{
+  background-color:#000;
+  width:5%;
+  height: 60px;
+  margin-left: 695px;
+    margin-right:90px;
+  margin-top:-60px;
+    top:50%; 
+ 
+  text-align:center;
+}
+.doubledot {
+    background-color:grey;
+  width:1.5%;
+  height: 60px;
+  margin-left: 658px;
+    margin-right:90px;
+  margin-top:-64px;
+    top:50%;
+  color:#fff;
+  font-size:50px;
+ 
+  text-align:center;
+}
+.period{
+   background-color:black;
+  width:10%;
+  height: 30px;
+  margin-left: 550px;
+    margin-right:-50px;
+  margin-top:-30px;
+    top:50%;
+  color:#fff;
+  text-align:center;
+}
+.periodscore{
+  background-color:#fff;
+  border:3px solid black;
+  width:4%;
+  height: 60px;
+  margin-left: 700px;
+    margin-right:-50px;
+  margin-top:-40px;
+    top:50%;
+  color:#fff;
+  text-align:center;
+}
+.foul-home{
+  background-color:#000;
+  width:12%;
+  height: 30px;
+  color:#fff;
+  margin-left: 450px;
+    margin-right:-800px;
+  margin-top:45px;
+    top:50%; 
+  text-align:center;
+}
+.foul-away{
+   background-color:#000;
+  width:12%;
+  height: 30px;
+  color:#fff;
+  margin-left: 720px;
+    margin-right:-800px;
+  margin-top:-30px;
+    top:50%; 
+  text-align:center;
+}
+.foulhomescore{
+  background-color:#fff;
+  width:11.5%;
+  height: 100px;
+  border:3px solid black;
+  color:#fff;
+  margin-left: 450px;
+    margin-right:-800px;
+  margin-top:10px;
+    top:50%; 
+  text-align:center;
+}
+.foulawayscore{
+   background-color:#fff;
+  width:11.5%;
+  height: 100px;
+  border:3px solid black;
+  color:#fff;
+  margin-left: 720px;
+    margin-right:-800px;
+  margin-top:-105px;
+    top:50%; 
+  text-align:center;
+}
+.player{
+    background-color:#000;
+  width:11.5%;
+  height: 35px;
+  color:#fff;
+  margin-left: 546px;
+    margin-right:-800px;
+  margin-top: -140px;
+    top:50%; 
+  text-align:center;
+}
+.playerscore{
+   background-color:#fff;
+  width:11%;
+  height: 100px;
+  border:3px solid black;
+  color:#fff;
+  margin-left: 545px;
+    margin-right:-800px;
+  margin-top:5px;
+    top:50%; 
+  text-align:center;
+}
+.fouls{
+   background-color:black;
+  width:10%;
+  height: 34px;
+  margin-left: 706px;
+    margin-right:-50px;
+  margin-top:-145px;
+    top:50%;
+  color:#fff;
+  text-align:center;
+}
+.foulsscore{
+  background-color:#fff;
+  width:9.5%;
+  height: 100px;
+  border:3px solid black;
+  color:#fff;
+  margin-left: 706px;
+    margin-right:-800px;
+  margin-top:6px;
+    top:50%; 
+  text-align:center;
+}
+.tol-home{
+  background-color:#000;
+  width:4%;
+  height: 30px;
+  margin-left: 480px;
+    margin-right:-40px;
+  margin-top:-40px;
+    top:50%;
+  color:#fff;
+  text-align:center;
+}
+.tol-away{
+  width:40%;
+  height:30px;
+  background-color:pink;
+  color:#000;
+  margin-left:-44px;
+  margin-top:-30;
+  left:40%;
+  top:50%; 
+}
+    </style>
+</head>
+<body>
+
+<center>
+<h1>Scoreboard Basket</h1>
+</center>
+
 <audio id="audio1">
  <source src="{{ asset('asset/lagu/sound1.mp3') }}" type="audio/mpeg">
   Your browser does not support the audio element.
@@ -26,28 +301,39 @@
   Your browser does not support the audio element.
 </audio>
 
+<centre>
+  <div class="largebox-div">
+  </div>
+  <span></span>
+  <span></span>
+  <div class="child-div"></div>
+  <div class="next-div"></div>
+  <div class="home-team" style="font-size:20px; font-weight:bold;" id="name_home">HOME</div>
+  <div class="away-team"  style="font-size:20px; font-weight:bold;" id="name_away">AWAY</div>
+  <div class="timer"></div>
+  <div class="twodigit" style="color:red; font-size:50px;" id="timer_menit">09</div>
+  <div class="nexttwodigit" style="color:red; font-size:50px;" id="timer_detik">59</div>
+  <div class="doubledot">:</div>
+  <div class="home-score" style="color:red; font-size:75px; " id="score_home">99</div>
+  <div class="away-score" style="color:red; font-size:75px; " id="score_away">100</div>
+  <div class="period" style="font-weight:bold;">PERIOD</div>
+  <div class="periodscore" style="color:red; font-size:55px;" id="period">0</div>
+  <div class="foul-home" style="font-weight:bold;">FOULS</div>
+  <div class="foul-away" style="font-weight:bold;">FOULS</div>
+  <div class="foulhomescore" style="color:red; font-size:75px; " id="fouls_home">0</div>
+  <div class="foulawayscore" style="color:red; font-size:75px; " id="fouls_away">0</div>
+  <!-- <div class="player">PLAYER</div>
+  <div class="playerscore"></div>
+  <div class="fouls">FOULS</div>
+  <div class="foulsscore"></div>
+  <div class="tol-home">TOL</div>
+  <span class="tol-away">TOL</span> -->
+  <div class="test" id="timer" style="color:white;"></div>
+  
+  
+  
+</centre>
 
-
-<center>
-<div class="form-row">
-    <div class="col md-4" id="name_home">a</div>
-    <div class="col md-4" id="name_away">b</div>
-</div>
-
-<div class="form-row mt-4">
-    <div class="col md-4" id="score_home">0</div>
-    <div class="col md-4" id="score_away">0</div>
-</div>
-</center>
-
-<center class="mt-4">
-<div>Timer = <span id="timer">09 : 00</span></div>
-</center>
-    
-
-@endsection
-
-@section('script')
 <script>
 var stop;
 var menit;
@@ -63,6 +349,9 @@ window.onload = function() {
           document.getElementById("name_away").innerHTML=data_json[0].name_away;
           document.getElementById("score_home").innerHTML=data_json[0].score_home;
           document.getElementById("score_away").innerHTML=data_json[0].score_away;
+          document.getElementById("period").innerHTML=data_json[0].period;
+          document.getElementById("fouls_away").innerHTML=data_json[0].fouls_away;
+          document.getElementById("fouls_home").innerHTML=data_json[0].fouls_home;
 
          
           // document.getElementById('timer').innerHTML = data_json[0].menit + ":" + data_json[0].detik;
@@ -90,6 +379,8 @@ window.onload = function() {
             update_sound();
           }
           
+          document.getElementById('timer_menit').innerHTML = data_json[0].menit;
+          document.getElementById('timer_detik').innerHTML = data_json[0].detik;
           document.getElementById('timer').innerHTML = data_json[0].menit + ":" + data_json[0].detik;
           
           if(data_json[0].status_waktu==1){
@@ -217,6 +508,6 @@ function update_sound(){
                 });
         }
 </script>
-
-@endsection
-
+    
+</body>
+</html>

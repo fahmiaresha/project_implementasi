@@ -56,17 +56,39 @@ Route::post('reset-menit-detik','ScoreboardController@reset_menit_detik');
 Route::post('resume-menit-detik','ScoreboardController@resume_menit_detik');
 Route::post('stop-menit-detik','ScoreboardController@stop_menit_detik');
 
+//reset-skor
+Route::post('reset-skor-home','ScoreboardController@resetscorehome');
+Route::post('reset-skor-away','ScoreboardController@resetscoreaway');
+
+//fouls-home
+Route::post('store-homefoulsplus1','ScoreboardController@homefoulsplus1');
+Route::post('store-homefoulsminus1','ScoreboardController@homefoulsminus1');
+
+//fouls-away
+Route::post('store-awayfoulsplus1','ScoreboardController@awayfoulsplus1');
+Route::post('store-awayfoulsminus1','ScoreboardController@awayfoulsminus1');
+
+//reset-fouls
+Route::post('reset-fouls-home','ScoreboardController@resetfoulshome');
+Route::post('reset-fouls-away','ScoreboardController@resetfoulsaway');
 
 //update-sse-database
 Route::get('update-sse','ScoreboardController@update_sse');
+
+//period
+Route::post('store-plus1period','ScoreboardController@plus1period');
+Route::post('store-minus1period','ScoreboardController@minus1period');
+Route::post('reset-period','ScoreboardController@resetperiod');
 
 //get-skor-all
 Route::get('get-score','ScoreboardController@get_score');
 
 
+
+
 // Route::get('testpost','ScoreboardController@test_post');
 
-// Route::get('hitungmundur','ScoreboardController@test_hitung_mundur');
+Route::get('hitungmundur','ScoreboardController@test_hitung_mundur');
 
 
 
